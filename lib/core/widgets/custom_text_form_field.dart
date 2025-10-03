@@ -9,13 +9,14 @@ class CustomTextFormField extends StatefulWidget {
     this.labelText,
     this.suffixIcon,
     this.obscureText = false,
-    required this.validator,
+    required this.validator, this.controller,
   });
   final String hintText;
   final String? labelText;
   final IconData? suffixIcon;
   final bool obscureText;
   final FormFieldValidator<String?> validator;
+  final TextEditingController? controller;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -33,6 +34,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       style: AppTextStyle.medium16,
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();
