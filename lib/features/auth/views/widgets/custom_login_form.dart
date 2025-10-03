@@ -4,22 +4,33 @@ import 'package:marketi/core/theme/light_colors.dart';
 import 'package:marketi/features/auth/views/widgets/custom_button.dart';
 import 'package:marketi/features/auth/views/widgets/custom_login_input_field.dart';
 
-class CustomForm extends StatefulWidget {
-  const CustomForm({super.key});
+class CustomLoginForm extends StatefulWidget {
+  const CustomLoginForm({super.key});
 
   @override
-  State<CustomForm> createState() => _CustomFormState();
+  State<CustomLoginForm> createState() => _CustomLoginFormState();
 }
 
-class _CustomFormState extends State<CustomForm> {
+class _CustomLoginFormState extends State<CustomLoginForm> {
   late GlobalKey<FormState> _formKey;
   late AutovalidateMode _autovalidateMode;
+
 
   @override
   void initState() {
     super.initState();
     _formKey = GlobalKey<FormState>();
     _autovalidateMode = AutovalidateMode.disabled;
+
+  }
+
+  @override
+  void dispose() {
+    _formKey.currentState!.reset();
+    _formKey.currentState!.dispose();
+    _formKey.currentState!.deactivate();
+
+    super.dispose();
   }
 
   @override
@@ -48,6 +59,7 @@ class _CustomFormState extends State<CustomForm> {
           ),
           SizedBox(height: 16.h),
           CustomInputField(
+
             validator: (String? value) {
               if (value?.trim().isEmpty ?? false) {
                 return 'field password is required';
