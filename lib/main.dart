@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/router/router_manager.dart';
 import 'package:marketi/core/theme/light_theme.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class Marketi extends StatelessWidget {
       minTextAdapt: true,
       ensureScreenSize: true,
       builder: (context, child) {
-        return MaterialApp(
+        return MaterialApp.router(
+          routerConfig: RouterManager.routerManager,
           debugShowCheckedModeBanner: false,
           theme: lightTheme,
           themeMode: ThemeMode.light,
