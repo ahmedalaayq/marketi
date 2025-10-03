@@ -8,13 +8,16 @@ class CustomInputField extends StatelessWidget {
     super.key,
     required this.inputLabel,
     required this.hintText,
-    this.suffixIcon, this.obscureText  = false, required this.validator,
+    this.suffixIcon,
+    this.obscureText = false,
+    required this.validator, this.controller,
   });
   final String inputLabel;
   final String hintText;
   final IconData? suffixIcon;
   final bool obscureText;
   final FormFieldValidator<String?> validator;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +31,12 @@ class CustomInputField extends StatelessWidget {
         SizedBox(height: 4.h),
 
         CustomTextFormField(
-          
           validator: validator,
-          hintText: hintText, suffixIcon: suffixIcon,obscureText: obscureText,),
+          hintText: hintText,
+          suffixIcon: suffixIcon,
+          obscureText: obscureText,
+          controller: controller,
+        ),
       ],
     );
   }
