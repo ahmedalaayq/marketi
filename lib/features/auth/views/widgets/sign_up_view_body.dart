@@ -1,9 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
-import 'package:marketi/core/theme/light_colors.dart';
 import 'package:marketi/features/auth/views/widgets/auth_redirect_text.dart';
 import 'package:marketi/features/auth/views/widgets/custom_sign_up_form.dart';
 
@@ -33,8 +31,6 @@ class SignUpViewBody extends StatelessWidget {
                 SizedBox(height: 55.h),
 
                 const Spacer(),
-
-                /// TODO: Auth Redirect Text
                 AuthRedirectText(
                   question: 'Already have an account? ',
                   action: 'Log In',
