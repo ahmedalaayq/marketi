@@ -5,32 +5,37 @@ import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
 
 class CustomHomeProductGridItem extends StatelessWidget {
-  const CustomHomeProductGridItem({super.key, required this.index});
+  const CustomHomeProductGridItem({super.key, required this.index, required this.onTap});
   final int index;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: double.infinity,
-          height: 174.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.r),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 6,
-                offset: Offset(0, 3),
-              ),
-            ],
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(
-                index.isEven
-                    ? AssetsManager.productImagePoloShirt
-                    : AssetsManager.productImageShoes,
+        InkWell(
+          overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+          onTap: onTap,
+          child: Container(
+            width: double.infinity,
+            height: 174.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.r),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 6,
+                  offset: Offset(0, 3),
+                ),
+              ],
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(
+                  index.isEven
+                      ? AssetsManager.productImagePoloShirt
+                      : AssetsManager.productImageShoes,
+                ),
               ),
             ),
           ),

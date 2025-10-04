@@ -7,12 +7,13 @@ class CustomHomeCategorySection extends StatefulWidget {
   const CustomHomeCategorySection({super.key});
 
   @override
-  State<CustomHomeCategorySection> createState() => _CustomHomeCategorySectionState();
+  State<CustomHomeCategorySection> createState() =>
+      _CustomHomeCategorySectionState();
 }
 
 class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
   int _selectedCategoryIndex = 0;
-    final categories = ["T-Shirts", "Jeans", "Shoes", "Jackets", "Accessories"];
+  final categories = ["T-Shirts", "Jeans", "Shoes", "Jackets", "Accessories"];
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,9 @@ class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
                 _selectedCategoryIndex = index;
               });
             },
-            child: Container(
+            child: AnimatedContainer(
+              curve: Curves.easeInOut,
+              duration: const Duration(milliseconds: 350),
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 7.h),
               decoration: BoxDecoration(

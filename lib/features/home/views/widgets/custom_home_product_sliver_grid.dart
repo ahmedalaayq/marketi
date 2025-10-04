@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/features/home/views/widgets/custom_home_product_grid_item.dart';
 
 class CustomHomeProductSliverGrid extends StatelessWidget {
@@ -11,7 +13,12 @@ class CustomHomeProductSliverGrid extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 20.h),
       sliver: SliverGrid(
         delegate: SliverChildBuilderDelegate((context, index) {
-          return CustomHomeProductGridItem(index: index);
+          return CustomHomeProductGridItem(
+            index: index,
+            onTap: () {
+              GoRouter.of(context).push(AppRoutes.productDetailsView);
+            },
+          );
         }, childCount: 10),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           mainAxisSpacing: 16,
