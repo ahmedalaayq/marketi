@@ -46,7 +46,7 @@ class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
                     isSelected
                         ? [
                           BoxShadow(
-                            color: LightColors.primaryColor.withOpacity(0.3),
+                            color: LightColors.primaryColor.withValues(alpha: 0.3),
                             blurRadius: 6,
                             offset: const Offset(0, 3),
                           ),
