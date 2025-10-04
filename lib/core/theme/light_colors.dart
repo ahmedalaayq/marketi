@@ -8,4 +8,5 @@ class LightColors {
   static const Color starColor = Color(0xFFFFA928);
   static const Color redColor = Color(0xFFED1010);
   static const Color lightWhiteColor = Color(0xFFE6E6E6);
+  static const Color trailingIconColor = Color(0xFFB3B3B3);
 }

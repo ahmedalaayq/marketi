@@ -42,6 +42,11 @@ class AppTextStyle {
     color: LightColors.greyColor,
     fontWeight: FontWeight.w400,
   );
+  static final regular16Black = TextStyle(
+    fontSize: 16.sp,
+    color: LightColors.blackColor,
+    fontWeight: FontWeight.w400,
+  );
   static final medium16 = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
