@@ -19,7 +19,7 @@ final ThemeData lightTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     hintStyle: AppTextStyle.regular16,
     
-    filled: false,
+    filled: true,
     fillColor: LightColors.lightWhiteColor,
     contentPadding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 20.w),
     border: const OutlineInputBorder(),
