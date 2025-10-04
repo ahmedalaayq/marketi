@@ -15,15 +15,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          /// 🔹 Title + Search
+          /// Title + Search
           const SliverToBoxAdapter(child: CustomHomeTopSection()),
 
-          /// 🔹 Categories
+          /// Categories
           const SliverToBoxAdapter(child: CustomHomeCategorySection()),
 
           SliverPadding(padding: EdgeInsets.only(top: 24.h)),
 
-          /// 🔹 Products Grid
+          /// Products Grid
           const CustomHomeProductSliverGrid(),
         ],
       ),
