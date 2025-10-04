@@ -11,10 +11,16 @@ class ProductDetailsView extends StatelessWidget {
       appBar: AppBar(title: const Text('Details')),
       body: const Stack(
         children: [
-          CustomTopProductDetailsSection(),
+          Padding(
+            padding: EdgeInsets.only(bottom: 120.0),
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: CustomTopProductDetailsSection(),
+            ),
+          ),
 
-          Positioned(
-            bottom: 0,
+          Align(
+            alignment: Alignment.bottomCenter,
             child: CustomProductDetailsBottomSection(),
           ),
         ],
