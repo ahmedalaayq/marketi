@@ -24,70 +24,71 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       body: SafeArea(child: _views[_currentIndex]),
       bottomNavigationBar: Container(
-        width: 390.w,
         height: 86.h,
-        clipBehavior: Clip.antiAlias,
-        decoration: const ShapeDecoration(
+        decoration: BoxDecoration(
           color: Colors.white,
-          shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: Color(0xFFE6E6E6)),
+          border: const Border(
+            top: BorderSide(width: 1, color: Color(0xFFE6E6E6)),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 8,
+              offset: const Offset(0, -2),
+            )
+          ],
         ),
-        child: BottomNavigationBar(
-          selectedItemColor: LightColors.primaryColor,
-          unselectedItemColor: LightColors.greyColor,
-          iconSize: 27.sp,
-          unselectedLabelStyle: AppTextStyle.medium12.copyWith(height: 2.0.h),
-          selectedLabelStyle: AppTextStyle.medium12.copyWith(height: 2.0.h),
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _currentIndex,
-          onTap: (int index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                colorFilter: ColorFilter.mode(
-                  _currentIndex == 0
-                      ? LightColors.primaryColor
-                      : LightColors.lightgreyColor,
-                  BlendMode.srcIn,
-                ),
-                AssetsManager.homeNavBarIcon,
-              ),
+        child: NavigationBar(
+          animationDuration: const Duration(milliseconds: 400),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          height: 86.h,
+          selectedIndex: _currentIndex,
+          indicatorColor: LightColors.primaryColor.withValues(alpha: 0.1),
+          onDestinationSelected: (i) => setState(() => _currentIndex = i),
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+          destinations: [
+            _buildDestination(
+              index: 0,
+              icon: AssetsManager.homeNavBarIcon,
               label: 'Home',
             ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                colorFilter: ColorFilter.mode(
-                  _currentIndex == 1
-                      ? LightColors.primaryColor
-                      : LightColors.lightgreyColor,
-                  BlendMode.srcIn,
-                ),
-                AssetsManager.cartNavBarIcon),
+            _buildDestination(
+              index: 1,
+              icon: AssetsManager.cartNavBarIcon,
               label: 'Cart',
             ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                colorFilter: ColorFilter.mode(
-                  _currentIndex == 2
-                      ? LightColors.primaryColor
-                      : LightColors.lightgreyColor,
-                  BlendMode.srcIn,
-                ),
-                AssetsManager.accountNavBarIcon),
+            _buildDestination(
+              index: 2,
+              icon: AssetsManager.accountNavBarIcon,
               label: 'Account',
             ),
           ],
         ),
       ),
+    );
+  }
+
+  NavigationDestination _buildDestination({
+    required int index,
+    required String icon,
+    required String label,
+  }) {
+    final isSelected = _currentIndex == index;
+    return NavigationDestination(
+      icon: SvgPicture.asset(
+        icon,
+        width: 26.w,
+        height: 26.w,
+        colorFilter: ColorFilter.mode(
+          isSelected ? LightColors.primaryColor : LightColors.lightgreyColor,
+          BlendMode.srcIn,
+        ),
+      ),
+      label: label,
     );
   }
 }

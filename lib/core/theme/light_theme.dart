@@ -43,6 +43,18 @@ final ThemeData lightTheme = ThemeData(
     selectionHandleColor: LightColors.primaryColor,
     cursorColor: LightColors.primaryColor,
   ),
+
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    selectedItemColor: LightColors.primaryColor,
+          unselectedItemColor: LightColors.greyColor,
+          unselectedLabelStyle: AppTextStyle.medium12.copyWith(height: 2.0.h),
+          selectedLabelStyle: AppTextStyle.medium12.copyWith(height: 2.0.h),
+          type: BottomNavigationBarType.fixed,
+  ),
+  splashFactory: NoSplash.splashFactory,
+  splashColor: Colors.transparent,
+  highlightColor: Colors.transparent,
+  hoverColor: Colors.transparent
 );
 
 OutlineInputBorder _buildTextFieldBorder({double? borderWidth, Color? color}) {
