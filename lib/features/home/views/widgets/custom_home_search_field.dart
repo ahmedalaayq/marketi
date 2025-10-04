@@ -17,7 +17,7 @@ class CustomHomeSearchField extends StatelessWidget {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: 'Search for clothes...',
-                    hintStyle: AppTextStyle.medium12.copyWith(
+                    hintStyle: AppTextStyle.regular16.copyWith(
                       color: Colors.grey,
                     ),
                     contentPadding: EdgeInsets.symmetric(
