@@ -23,7 +23,7 @@ class CartViewBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomCartAppbar(title: 'My Cart',),
+                  const CustomAppbar(title: 'My Cart',),
                   ...List.generate(3, (int index) {
                     return const CustomShoppingCartItem();
                   }),

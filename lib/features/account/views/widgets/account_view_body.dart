@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/assets_manager/assets_manager.dart';
+import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
 import 'package:marketi/features/cart/views/widgets/custom_cart_appbar.dart';
+
 class AccountViewBody extends StatelessWidget {
   const AccountViewBody({super.key});
 
@@ -17,7 +20,7 @@ class AccountViewBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Column(
               children: [
-                const CustomCartAppbar(title: 'Account'),
+                const CustomAppbar(title: 'Account'),
                 const Divider(color: LightColors.lightWhiteColor),
 
                 //todo: --- Orders ---
@@ -39,6 +42,9 @@ class AccountViewBody extends StatelessWidget {
                 _buildAccountTile(
                   title: 'Address Book',
                   img: AssetsManager.accountAddressBookIcon,
+                  onTap: () {
+                    GoRouter.of(context).push(AppRoutes.addressView);
+                  },
                 ),
 
                 SizedBox(height: 16.h),
@@ -78,18 +84,16 @@ class AccountViewBody extends StatelessWidget {
         ),
       ],
     );
-    
   }
 }
 
-
-  Widget _dividerInset() {
-    return Divider(
-      indent: 64.w,
-      endIndent: 16.w,
-      color: LightColors.lightWhiteColor,
-    );
-  }
+Widget _dividerInset() {
+  return Divider(
+    indent: 64.w,
+    endIndent: 16.w,
+    color: LightColors.lightWhiteColor,
+  );
+}
 
 Widget _buildAccountTile({
   required String title,
