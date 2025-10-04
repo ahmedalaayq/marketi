@@ -6,7 +6,7 @@ import 'package:marketi/features/main/views/main_view.dart';
 
 class RouterManager {
   static final GoRouter routerManager = GoRouter(
-    initialLocation: AppRoutes.loginView,
+    initialLocation: AppRoutes.mainView,
     routes: <GoRoute>[
       GoRoute(
         path: AppRoutes.loginView,

@@ -26,7 +26,7 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      body: _views[_currentIndex],
+      body: SafeArea(child: _views[_currentIndex]),
       bottomNavigationBar: Container(
         width: 390.w,
         height: 86.h,
