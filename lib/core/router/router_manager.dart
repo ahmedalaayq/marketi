@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/router/app_routes.dart';
+import 'package:marketi/features/account/views/account_view.dart';
 import 'package:marketi/features/auth/views/login_view.dart';
 import 'package:marketi/features/auth/views/sign_up_view.dart';
 import 'package:marketi/features/cart/views/cart_view.dart';
@@ -29,6 +30,10 @@ class RouterManager {
       GoRoute(
         path: AppRoutes.cartView,
         builder: (context, state) => const CartView(),
+      ),
+      GoRoute(
+        path: AppRoutes.accountView,
+        builder: (context, state) => const AccountView(),
       ),
     ],
   );

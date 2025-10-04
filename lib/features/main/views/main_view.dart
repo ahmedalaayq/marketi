@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketi/core/assets_manager/assets_manager.dart';
 import 'package:marketi/core/theme/light_colors.dart';
+import 'package:marketi/features/account/views/account_view.dart';
 import 'package:marketi/features/cart/views/cart_view.dart';
 import 'package:marketi/features/home/views/home_view.dart';
 
@@ -14,11 +15,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  final List<Widget> _views = [
-    const HomeView(),
-     const CartView(),
-    Container(color: LightColors.redColor),
-  ];
+  final List<Widget> _views = const [HomeView(), CartView(), AccountView()];
 
   int _currentIndex = 0;
 
@@ -38,7 +35,7 @@ class _MainViewState extends State<MainView> {
               color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 8,
               offset: const Offset(0, -2),
-            )
+            ),
           ],
         ),
         child: NavigationBar(
