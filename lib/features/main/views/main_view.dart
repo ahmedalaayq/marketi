@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketi/core/assets_manager/assets_manager.dart';
 import 'package:marketi/core/theme/light_colors.dart';
+import 'package:marketi/features/cart/views/cart_view.dart';
 import 'package:marketi/features/home/views/home_view.dart';
 
 class MainView extends StatefulWidget {
@@ -15,7 +16,7 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   final List<Widget> _views = [
     const HomeView(),
-    Container(color: LightColors.starColor),
+     const CartView(),
     Container(color: LightColors.redColor),
   ];
 
