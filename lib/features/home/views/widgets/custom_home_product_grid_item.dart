@@ -42,7 +42,7 @@ class CustomHomeProductGridItem extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         Text(
-          '1,190\$',
+          index.isEven ? '1190\$' : '1100\$',
           style: AppTextStyle.semiBold16.copyWith(
             color: LightColors.primaryColor,
           ),
