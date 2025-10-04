@@ -3,6 +3,7 @@ import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/features/auth/views/login_view.dart';
 import 'package:marketi/features/auth/views/sign_up_view.dart';
 import 'package:marketi/features/main/views/main_view.dart';
+import 'package:marketi/features/product_details/views/product_details_view.dart';
 
 class RouterManager {
   static final GoRouter routerManager = GoRouter(
@@ -19,6 +20,10 @@ class RouterManager {
       GoRoute(
         path: AppRoutes.mainView,
         builder: (context, state) => const MainView(),
+      ),
+      GoRoute(
+        path: AppRoutes.productDetailsView,
+        builder: (context, state) => const ProductDetailsView(),
       ),
     ],
   );
