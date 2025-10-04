@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
-import 'package:marketi/features/home/views/widgets/custom_btn_icon.dart';
+import 'package:marketi/core/widgets/custom_btn_icon.dart';
 
 class CustomProductDetailsBottomSection extends StatelessWidget {
   const CustomProductDetailsBottomSection({super.key});
