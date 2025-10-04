@@ -31,7 +31,6 @@ class _CustomSignUpFormState extends State<CustomSignUpForm> {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     _formKey.currentState?.reset();
-    _formKey.currentState?.dispose();
     super.dispose();
   }
 

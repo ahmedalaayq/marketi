@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/core/theme/light_colors.dart';
 import 'package:marketi/features/auth/views/widgets/custom_button.dart';
 import 'package:marketi/features/auth/views/widgets/custom_login_input_field.dart';
@@ -15,21 +17,16 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
   late GlobalKey<FormState> _formKey;
   late AutovalidateMode _autovalidateMode;
 
-
   @override
   void initState() {
     super.initState();
     _formKey = GlobalKey<FormState>();
     _autovalidateMode = AutovalidateMode.disabled;
-
   }
 
   @override
   void dispose() {
-    _formKey.currentState!.reset();
-    _formKey.currentState!.dispose();
-    _formKey.currentState!.deactivate();
-
+    _formKey.currentState?.reset();
     super.dispose();
   }
 
@@ -59,7 +56,6 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
           ),
           SizedBox(height: 16.h),
           CustomInputField(
-
             validator: (String? value) {
               if (value?.trim().isEmpty ?? false) {
                 return 'field password is required';
@@ -81,6 +77,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                 if (_formKey.currentState?.validate() ?? false) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
+                      behavior: SnackBarBehavior.floating,
                       backgroundColor: LightColors.primaryColor,
                       content: Row(
                         children: [
@@ -90,6 +87,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                       ),
                     ),
                   );
+                  GoRouter.of(context).push(AppRoutes.mainView);
                 } else {
                   setState(() {
                     _autovalidateMode = AutovalidateMode.always;
