@@ -8,6 +8,7 @@ import 'package:marketi/features/auth/views/login_view.dart';
 import 'package:marketi/features/auth/views/sign_up_view.dart';
 import 'package:marketi/features/cart/views/address_view.dart';
 import 'package:marketi/features/cart/views/cart_view.dart';
+import 'package:marketi/features/home/models/product_model.dart';
 import 'package:marketi/features/main/views/main_view.dart';
 import 'package:marketi/features/payment/views/payment_view.dart';
 import 'package:marketi/features/product_details/views/product_details_view.dart';
@@ -40,7 +41,10 @@ class RouterManager {
       ),
       GoRoute(
         path: AppRoutes.productDetailsView,
-        builder: (context, state) => const ProductDetailsView(),
+        builder: (context, state) {
+          final product = state.extra as ProductModel?;
+          return ProductDetailsView(product: product);
+        },
       ),
       GoRoute(
         path: AppRoutes.cartView,

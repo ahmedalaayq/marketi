@@ -5,7 +5,9 @@ import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
 
 class CustomProductDetailsRating extends StatelessWidget {
-  const CustomProductDetailsRating({super.key});
+  const CustomProductDetailsRating({super.key, required this.rate, required this.ratingCount});
+  final num rate;
+  final int ratingCount;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class CustomProductDetailsRating extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: '4.0/5',
+                text: '$rate/5',
                 style: AppTextStyle.medium16.copyWith(
                   color: LightColors.blackColor,
                   decoration: TextDecoration.underline,
@@ -30,7 +32,7 @@ class CustomProductDetailsRating extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: ' (45 reviews)',
+                text: ' ($ratingCount reviews)',
                 style: AppTextStyle.medium16.copyWith(
                   color: LightColors.greyColor,
                 ),

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
+import 'package:marketi/features/home/models/category_model.dart';
 
 class CustomHomeCategorySection extends StatefulWidget {
-  const CustomHomeCategorySection({super.key});
+  const CustomHomeCategorySection({super.key, required this.categories});
+  final List<CategoryModel> categories;
 
   @override
   State<CustomHomeCategorySection> createState() =>
@@ -13,13 +15,14 @@ class CustomHomeCategorySection extends StatefulWidget {
 
 class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
   int _selectedCategoryIndex = 0;
-  final categories = ["T-Shirts", "Jeans", "Shoes", "Jackets", "Accessories"];
+  final testcategories = ["T-Shirts", "Jeans", "Shoes", "Jackets", "Accessories"];
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40.h,
       child: ListView.separated(
+        
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
@@ -46,7 +49,9 @@ class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
                     isSelected
                         ? [
                           BoxShadow(
-                            color: LightColors.primaryColor.withValues(alpha: 0.3),
+                            color: LightColors.primaryColor.withValues(
+                              alpha: 0.3,
+                            ),
                             blurRadius: 6,
                             offset: const Offset(0, 3),
                           ),
@@ -54,7 +59,7 @@ class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
                         : [],
               ),
               child: Text(
-                categories[index],
+                widget.categories[index].categoryName,
                 style: AppTextStyle.medium16.copyWith(
                   color: isSelected ? Colors.white : Colors.black,
                 ),
@@ -63,7 +68,7 @@ class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
           );
         },
         separatorBuilder: (context, index) => SizedBox(width: 16.w),
-        itemCount: categories.length,
+        itemCount: widget.categories.length,
       ),
     );
   }

@@ -125,7 +125,8 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                       btnText: 'Sign in',
                       onPressed: () async {
                         if (_formKey.currentState?.validate() ?? false) {
-                          if (_emailController.text == 'ahmed.alaayq@gmail.com' &&
+                          if (_emailController.text ==
+                                  'ahmed.alaayq@gmail.com' &&
                               _passwordController.text == 'ahmed123') {
                             GoRouter.of(context).push(AppRoutes.mainView);
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -135,12 +136,15 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                                 content: Row(
                                   children: [
                                     Expanded(child: Text('Login Success')),
-                                    Icon(Icons.check_circle, color: Colors.white),
+                                    Icon(
+                                      Icons.check_circle,
+                                      color: Colors.white,
+                                    ),
                                   ],
                                 ),
                               ),
                             );
-                    
+
                             return;
                           } else {
                             context.read<AuthCubit>().login(
@@ -151,7 +155,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                         }
                       },
                     );
-                  }
+                  },
                 ),
               ),
             ),
