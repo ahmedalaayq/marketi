@@ -99,9 +99,8 @@ class _CustomShoppingCartItemState extends State<CustomShoppingCartItem> {
                                 size: 23.sp,
                               ),
                             ),
-
                             Text(counter.toString(), style: AppTextStyle.medium16),
-                            Text('2', style: AppTextStyle.medium16),
+
                             IconButton.filled(
                               style: IconButton.styleFrom(
                                 backgroundColor: Colors.white,
