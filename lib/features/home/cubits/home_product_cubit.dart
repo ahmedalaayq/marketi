@@ -18,4 +18,16 @@ class HomeProductCubit extends Cubit<HomeProductState> {
       },
     );
   }
+  fetchProductsByCategory(String categoryName) async {
+    emit(HomeProductLoadingState());
+    final response = await homeRepo.getProductsByCategory(categoryName);
+    response.fold(
+      (error) {
+        emit(HomeProductFailureState(errorMessage: error));
+      },
+      (products) {
+        emit(HomeProductSuccessState(products: products));
+      },
+    );
+  }
 }

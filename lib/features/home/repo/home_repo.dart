@@ -59,4 +59,32 @@ class HomeRepo {
       return Left(error.toString());
     }
   }
+
+  Future<Either<String, List<ProductModel>>> getProductsByCategory(
+    String categoryName,
+  ) async {
+    try {
+      final Response response = await di<ApiService>().getRequest(
+        //? https://fakestoreapi.com/products/category/:category_name
+        endPoint: "/products/category/$categoryName",
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final List<dynamic> dataList = response.data as List<dynamic>;
+        final List<ProductModel> products =
+            dataList
+                .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+                .toList();
+        return Right(products);
+      } else {
+        log(response.data.toString());
+        return const Left('An error occurred');
+      }
+    } catch (error) {
+      if (error is DioException) {
+        return Left(error.response?.data.toString() ?? error.message!);
+      }
+      return Left(error.toString());
+    }
+  }
 }
