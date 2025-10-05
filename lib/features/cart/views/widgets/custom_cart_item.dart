@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,9 +14,11 @@ class CustomShoppingCartItem extends StatefulWidget {
   @override
   State<CustomShoppingCartItem> createState() => _CustomShoppingCartItemState();
 }
-
 class _CustomShoppingCartItemState extends State<CustomShoppingCartItem> {
-  int counter = 0;
+  int counter = 1;
+  final double unitPrice = 1.19; 
+  double totalPrice = 1.19;     
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,23 +67,24 @@ class _CustomShoppingCartItemState extends State<CustomShoppingCartItem> {
                         ),
                       ],
                     ),
-
                     Text('Size L', style: AppTextStyle.regular12),
                     SizedBox(width: 18.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('\$ 1,190', style: AppTextStyle.semiBold14),
+                        Expanded(
+                          child: Text(
+                            '\$ ${totalPrice.toStringAsFixed(2)}',
+                            style: AppTextStyle.semiBold14,
+                          ),
+                        ),
                         Row(
                           spacing: 9,
                           children: [
                             IconButton.filled(
                               style: IconButton.styleFrom(
                                 backgroundColor: Colors.white,
-                                minimumSize: Size(
-                                  15.75221061706543.w,
-                                  15.366655349731445.h,
-                                ),
+                                minimumSize: Size(15.w, 15.h),
                                 shape: RoundedRectangleBorder(
                                   side: BorderSide(
                                     color: const Color(0xFFCCCCCC),
@@ -90,7 +95,10 @@ class _CustomShoppingCartItemState extends State<CustomShoppingCartItem> {
                               ),
                               onPressed: () {
                                 setState(() {
-                                  counter > 0 ? counter-- : null;
+                                  if (counter > 1) {
+                                    counter--;
+                                    totalPrice = unitPrice * counter;
+                                  }
                                 });
                               },
                               icon: Icon(
@@ -99,15 +107,14 @@ class _CustomShoppingCartItemState extends State<CustomShoppingCartItem> {
                                 size: 23.sp,
                               ),
                             ),
-                            Text(counter.toString(), style: AppTextStyle.medium16),
-
+                            Text(
+                              counter.toString(),
+                              style: AppTextStyle.medium16,
+                            ),
                             IconButton.filled(
                               style: IconButton.styleFrom(
                                 backgroundColor: Colors.white,
-                                minimumSize: Size(
-                                  23.75221061706543.w,
-                                  22.366655349731445.h,
-                                ),
+                                minimumSize: Size(23.w, 22.h),
                                 shape: RoundedRectangleBorder(
                                   side: BorderSide(
                                     color: const Color(0xFFCCCCCC),
@@ -119,6 +126,7 @@ class _CustomShoppingCartItemState extends State<CustomShoppingCartItem> {
                               onPressed: () {
                                 setState(() {
                                   counter++;
+                                  totalPrice = unitPrice * counter;
                                 });
                               },
                               icon: const Icon(
