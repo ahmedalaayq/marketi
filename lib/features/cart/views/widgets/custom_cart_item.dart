@@ -99,7 +99,11 @@ class _CustomShoppingCartItemState extends State<CustomShoppingCartItem> {
                                 size: 23.sp,
                               ),
                             ),
+<<<<<<< HEAD
                             Text(counter.toString(), style: AppTextStyle.medium16),
+=======
+                            Text('2', style: AppTextStyle.medium16),
+>>>>>>> 08047b628cad92ec62e2efa47942ca5c99413a95
 
                             IconButton.filled(
                               style: IconButton.styleFrom(
