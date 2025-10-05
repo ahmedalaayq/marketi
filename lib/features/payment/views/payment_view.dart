@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:marketi/core/theme/app_text_style.dart';
+import 'package:marketi/core/theme/light_colors.dart';
 
 class PaymentView extends StatefulWidget {
   const PaymentView({super.key});
@@ -90,6 +93,7 @@ class _PaymentViewState extends State<PaymentView>
                 label: "Card Holder Name",
                 hint: "Ahmed Emad",
                 controller: nameController,
+                maxLength: 30,
               ),
               SizedBox(height: 16.h),
               Row(
@@ -133,21 +137,17 @@ class _PaymentViewState extends State<PaymentView>
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    padding: EdgeInsets.symmetric(vertical: 14.h),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                  ),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Payment processed 🚀")),
+                      const SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        backgroundColor: LightColors.primaryColor,
+                        content: Text("Payment processed 🚀")),
                     );
                   },
-                  child: const Text(
+                  child: Text(
                     "Pay Now",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: AppTextStyle.semiBold24.copyWith(color: LightColors.lightWhiteColor,fontSize: 18.sp),
                   ),
                 ),
               )
@@ -170,7 +170,7 @@ class _PaymentViewState extends State<PaymentView>
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 10,
             offset: const Offset(0, 6),
           )
@@ -181,10 +181,10 @@ class _PaymentViewState extends State<PaymentView>
         children: [
           Align(
             alignment: Alignment.topRight,
-            child: Image.network(
+            child: SvgPicture.network(
               "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg",
               height: 40.h,
-              color: Colors.white,
+              colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
             ),
           ),
           const Spacer(),
@@ -192,19 +192,23 @@ class _PaymentViewState extends State<PaymentView>
             cardNumberController.text.isEmpty
                 ? "**** **** **** 1234"
                 : cardNumberController.text,
-            style: TextStyle(color: Colors.white, fontSize: 20.sp, letterSpacing: 2),
+            style: AppTextStyle.medium16.copyWith(fontSize: 20.sp, letterSpacing: 2,color: LightColors.lightWhiteColor),
           ),
           SizedBox(height: 16.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                nameController.text.isEmpty ? "CARD HOLDER" : nameController.text,
-                style: TextStyle(color: Colors.white, fontSize: 14.sp),
+              Expanded(
+                child: Text(
+                  nameController.text.isEmpty ? "CARD HOLDER" : nameController.text,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyle.semiBold14.copyWith(color: LightColors.lightWhiteColor),
+                ),
               ),
               Text(
                 expiryController.text.isEmpty ? "MM/YY" : expiryController.text,
-                style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                style: AppTextStyle.semiBold14.copyWith(color: LightColors.lightWhiteColor),
               ),
             ],
           )
@@ -225,7 +229,7 @@ class _PaymentViewState extends State<PaymentView>
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 10,
             offset: const Offset(0, 6),
           )
@@ -263,15 +267,19 @@ class _PaymentViewState extends State<PaymentView>
     List<TextInputFormatter>? inputFormatters,
     TextInputType? keyboardType,
     bool obscureText = false,
+    int? maxLength,
   }) {
     return TextField(
+      maxLengthEnforcement: MaxLengthEnforcement.none,
+      maxLength: maxLength,
       controller: controller,
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
       obscureText: obscureText,
-      onChanged: (_) => setState(() {}), // يحدث الكارت مباشرة
+      onChanged: (_) => setState(() {}), 
       decoration: InputDecoration(
         labelText: label,
+        labelStyle: AppTextStyle.semiBold16.copyWith(color: LightColors.primaryColor),
         hintText: hint,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.r)),
         focusedBorder: OutlineInputBorder(
@@ -283,7 +291,6 @@ class _PaymentViewState extends State<PaymentView>
   }
 }
 
-/// Formatter لكتابة تاريخ البطاقة (MM/YY)
 class ExpiryDateFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
