@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:marketi/core/networking/api_service.dart';
 import 'package:marketi/core/router/router_manager.dart';
 import 'package:marketi/core/theme/light_theme.dart';
+import 'package:marketi/core/utils/service_locator.dart';
 
 void main() async {
-  runApp(const Marketi());
   WidgetsFlutterBinding.ensureInitialized();
-  await ApiService.initDio();
+  setupServiceLocator();
+  runApp(const Marketi());
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

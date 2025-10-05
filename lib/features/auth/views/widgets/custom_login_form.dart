@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/core/theme/light_colors.dart';
+import 'package:marketi/core/utils/service_locator.dart';
 import 'package:marketi/features/auth/models/auth_response_model.dart';
 import 'package:marketi/features/auth/repo/auth_repo.dart';
 
@@ -73,8 +74,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
             validator: (String? value) {
               if (value?.trim().isEmpty ?? true) {
                 return 'field password is required';
-              }
-              else if (value!.length < 6) {
+              } else if (value!.length < 6) {
                 return 'password can\'t be less than 6 characters';
               }
               return null;
@@ -86,7 +86,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
               btnText: 'Sign in',
               onPressed: () async {
                 if (_formKey.currentState?.validate() ?? false) {
-                  final response = await AuthRepo().login(
+                  final response = await di<AuthRepo>().login(
                     userName: _emailController.text,
                     password: _passwordController.text,
                   );

@@ -2,15 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:marketi/core/networking/api_endpoints.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-abstract class ApiService {
+class ApiService {
   static Dio? _dio;
 
-  static initDio() {
+  ApiService() {
     _dio ??= Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
     _dio!.interceptors.add(PrettyDioLogger());
   }
 
-  static Future<dynamic> getRequest({
+  Future<dynamic> getRequest({
     required String endPoint,
     Map<String, dynamic>? queryParamters,
   }) async {
@@ -27,7 +27,7 @@ abstract class ApiService {
     }
   }
 
-  static Future<dynamic> postRequest({
+  Future<dynamic> postRequest({
     required String endPoint,
     Map<String, dynamic>? data,
   }) async {
