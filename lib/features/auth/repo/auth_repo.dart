@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:marketi/core/networking/api_endpoints.dart';
 import 'package:marketi/core/networking/api_service.dart';
 import 'package:marketi/core/utils/service_locator.dart';
+import 'package:marketi/core/utils/storage_manager.dart';
 import 'package:marketi/features/auth/models/auth_response_model.dart';
 
 class AuthRepo {
@@ -19,7 +20,13 @@ class AuthRepo {
         AuthResponseModel authResponseModel = AuthResponseModel.fromJson(
           response.data,
         );
-        return Right(authResponseModel);
+        if (authResponseModel.token != null &&
+            authResponseModel.token!.isNotEmpty) {
+          await di<StorageManager>().saveToken(value: authResponseModel.token!);
+          return Right(authResponseModel);
+        } else {
+          return const Left('token not provided');
+        }
       } else {
         return Left(response.toString());
       }

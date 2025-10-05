@@ -1,5 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/router/app_routes.dart';
+import 'package:marketi/core/utils/service_locator.dart';
+import 'package:marketi/core/utils/storage_keys.dart';
+import 'package:marketi/core/utils/storage_manager.dart';
 import 'package:marketi/features/account/views/account_view.dart';
 import 'package:marketi/features/auth/views/login_view.dart';
 import 'package:marketi/features/auth/views/sign_up_view.dart';
@@ -12,6 +15,16 @@ import 'package:marketi/features/product_details/views/product_details_view.dart
 class RouterManager {
   static final GoRouter routerManager = GoRouter(
     initialLocation: AppRoutes.loginView,
+    redirect: (context, state) async {
+      final token =
+          await di<StorageManager>().getToken(key: di<StorageKeys>().tokenKey)
+              as String?;
+      if (token != null && state.matchedLocation == AppRoutes.loginView ||
+          state.matchedLocation == AppRoutes.signUpView) {
+        return AppRoutes.mainView;
+      }
+      return null;
+    },
     routes: <GoRoute>[
       GoRoute(
         path: AppRoutes.loginView,

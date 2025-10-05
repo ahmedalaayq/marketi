@@ -1,6 +1,6 @@
 class AuthResponseModel {
   const AuthResponseModel({required this.token});
-  final String token;
+  final String? token;
 
   Map<String, dynamic> toJson() {
     return {"token": token};
