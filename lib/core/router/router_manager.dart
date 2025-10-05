@@ -6,6 +6,7 @@ import 'package:marketi/features/auth/views/sign_up_view.dart';
 import 'package:marketi/features/cart/views/address_view.dart';
 import 'package:marketi/features/cart/views/cart_view.dart';
 import 'package:marketi/features/main/views/main_view.dart';
+import 'package:marketi/features/payment/views/payment_view.dart';
 import 'package:marketi/features/product_details/views/product_details_view.dart';
 
 class RouterManager {
@@ -39,6 +40,10 @@ class RouterManager {
       GoRoute(
         path: AppRoutes.addressView,
         builder: (context, state) => const AddressView(),
+      ),
+      GoRoute(
+        path: AppRoutes.paymentView,
+        builder: (context, state) => const PaymentView(),
       ),
     ],
   );
