@@ -41,4 +41,18 @@ class ApiService {
       rethrow;
     }
   }
+  Future<dynamic> putRequest({
+    required String endPoint,
+    Map<String, dynamic>? data,
+  }) async {
+    try {
+      final Response response = await _dio!.put(
+        endPoint,
+        data: {"Content-Type": 'application/json', ...data ?? {}},
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
