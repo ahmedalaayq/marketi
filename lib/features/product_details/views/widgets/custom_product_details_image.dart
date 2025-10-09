@@ -11,10 +11,14 @@ class CustomProductDetailsImage extends StatelessWidget {
     return Center(
       child:
           image.isNotEmpty
-              ? CachedNetworkImage(
-                width: 341.w,
-                height: 368.5341491699219.h,
-                imageUrl: image,
+              ? Hero(
+                tag: 'productImage/$image',
+
+                child: CachedNetworkImage(
+                  width: 341.w,
+                  height: 368.5341491699219.h,
+                  imageUrl: image,
+                ),
               )
               : Image.asset(
                 width: 341.w,
