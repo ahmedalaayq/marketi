@@ -44,20 +44,20 @@ This structure keeps the app modular, scalable, and easy to maintain.
 
 | Layer | Technology |
 |-------|------------|
-| Framework | Flutter |
-| Language | Dart |
+| Framework        | Flutter |
+| Language         | Dart |
 | State Management | Provider / Cubit |
-| Routing | GoRouter |
-| Local Storage | Flutter Secure Storage / SharedPreferences / Sqflite |
-| UI Toolkit | Material 3 |
+| Routing          | GoRouter |
+| Local Storage    | Flutter Secure Storage / SharedPreferences / Sqflite |
+| UI Toolkit       | Material 3 |
 
 ---
 
 ## ⚙️ Installation & Setup
 
-1. **Clone the repository**
+1. **Clone the repository**  
    ```bash
-   git clone https://github.com/yourusername/marketi.git
+   git clone https://github.com/ahmedalaayq/marketi.git
    cd marketi
 ````
 
@@ -83,41 +83,44 @@ This structure keeps the app modular, scalable, and easy to maintain.
 
 ---
 
-## 🎨 UI Showcase (Selected & Organized)
+## 🎨 UI Showcase (Using Raw GitHub Links)
 
-I selected a few representative screenshots and organized them into a clean 2×2 grid for better visual reading.
+Here are some screenshots using direct raw links from your GitHub repository:
+
 <table>
   <tr>
     <td align="center">
-      <img src="assets/screenshots/login.png" alt="Product Details" width="320"/>
+      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/login.png" alt="Login" width="320"/>
       <div><strong>Login</strong></div>
     </td>
-      <td align="center">
-      <img src="assets/screenshots/register.png" alt="Product Details" width="320"/>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/register.png" alt="Register" width="320"/>
       <div><strong>Register</strong></div>
     </td>
     <td align="center">
-      <img src="assets/screenshots/home.png" alt="Home" width="320"/>
+      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/home.png" alt="Home" width="320"/>
       <div><strong>Home Screen</strong></div>
     </td>
     <td align="center">
-      <img src="assets/screenshots/details.png" alt="Categories" width="320"/>
+      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/details.png" alt="Product Details" width="320"/>
       <div><strong>Product Details</strong></div>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="assets/screenshots/cart.png" alt="Product Details" width="320"/>
+      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/cart.png" alt="Cart Screen" width="320"/>
       <div><strong>Cart Screen</strong></div>
     </td>
     <td align="center">
-      <img src="assets/screenshots/logout.png" alt="Product Details" width="320"/>
+      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/logout.png" alt="Logout Dialog" width="320"/>
       <div><strong>Logout Dialog</strong></div>
     </td>
-  
   </tr>
 </table>
 
+> If those filenames don’t exactly match what you have (e.g. `login.png`, `home.png`, etc.), update the image names accordingly.
+
+---
 
 ## 💡 Future Plans
 
