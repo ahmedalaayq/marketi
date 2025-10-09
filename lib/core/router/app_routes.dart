@@ -8,4 +8,5 @@ class AppRoutes {
   static const String accountView = '/accountView';
   static const String addressView = '/addressView';
   static const String paymentView = '/paymentView';
+  static const String splashView = '/splashView';
 }

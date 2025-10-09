@@ -24,8 +24,10 @@ abstract class AssetsManager {
   static const String accountAddressBookIcon = '$assetsIconsPath/Address.svg';
   static const String accountFAQsIcon = '$assetsIconsPath/Question.svg';
   static const String accountHelpCenterIcon = '$assetsIconsPath/Headphones.svg';
-  
-  
+
   /// Account Icons
   static const String addressLocationIcon = '$assetsIconsPath/Location.svg';
+
+  // Splash Image
+  static const String splashIconImage = '$assetsImagesPath/splash_icon.png';
 }
