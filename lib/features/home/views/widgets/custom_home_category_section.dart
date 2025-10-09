@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
 import 'package:marketi/features/home/models/category_model.dart';
+
 class CustomHomeCategorySection extends StatefulWidget {
   const CustomHomeCategorySection({
     super.key,
@@ -11,16 +12,21 @@ class CustomHomeCategorySection extends StatefulWidget {
   });
 
   final List<CategoryModel> categories;
-  final Function(String categoryName) onCategorySelected; 
+  final Function(String categoryName) onCategorySelected;
 
   @override
-  State<CustomHomeCategorySection> createState() =>
-      _CustomHomeCategorySectionState();
+  CustomHomeCategorySectionState createState() =>
+      CustomHomeCategorySectionState();
 }
 
-class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
-  int _selectedCategoryIndex = 0;
+class CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
+  resetCategories() {
+    setState(() {
+      _selectedCategoryIndex = 0;
+    });
+  }
 
+  int _selectedCategoryIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -44,19 +50,23 @@ class _CustomHomeCategorySectionState extends State<CustomHomeCategorySection> {
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 7.h),
               decoration: BoxDecoration(
-                color: isSelected
-                    ? LightColors.primaryColor
-                    : LightColors.lightWhiteColor,
+                color:
+                    isSelected
+                        ? LightColors.primaryColor
+                        : LightColors.lightWhiteColor,
                 borderRadius: BorderRadius.circular(10.r),
-                boxShadow: isSelected
-                    ? [
-                        BoxShadow(
-                          color: LightColors.primaryColor.withValues(alpha: 0.3),
-                          blurRadius: 6,
-                          offset: const Offset(0, 3),
-                        ),
-                      ]
-                    : [],
+                boxShadow:
+                    isSelected
+                        ? [
+                          BoxShadow(
+                            color: LightColors.primaryColor.withValues(
+                              alpha: 0.3,
+                            ),
+                            blurRadius: 6,
+                            offset: const Offset(0, 3),
+                          ),
+                        ]
+                        : [],
               ),
               child: Text(
                 widget.categories[index].categoryName,
