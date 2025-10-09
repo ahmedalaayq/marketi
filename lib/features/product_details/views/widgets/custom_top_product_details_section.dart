@@ -8,7 +8,7 @@ import 'package:marketi/features/product_details/views/widgets/custom_product_de
 class CustomTopProductDetailsSection extends StatelessWidget {
   const CustomTopProductDetailsSection({super.key, required this.product});
   final ProductModel product;
-
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
