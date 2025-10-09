@@ -5,6 +5,8 @@ import 'package:marketi/core/utils/storage_keys.dart';
 import 'package:marketi/core/utils/storage_manager.dart';
 import 'package:marketi/features/auth/cubit/auth_cubit.dart';
 import 'package:marketi/features/auth/repo/auth_repo.dart';
+import 'package:marketi/features/cart/cubit/cart_cubit.dart';
+import 'package:marketi/features/cart/repo/cart_repo.dart';
 import 'package:marketi/features/home/cubits/home_categories_cubit.dart';
 import 'package:marketi/features/home/cubits/home_product_cubit.dart';
 import 'package:marketi/features/home/repo/home_repo.dart';
@@ -18,7 +20,13 @@ setupServiceLocator() {
   // Auth Repo
   di.registerLazySingleton<AuthRepo>(() => AuthRepo());
   // Home Repo
-  di.registerLazySingleton<HomeRepo>(() => HomeRepo(apiService: di<ApiService>()));
+  di.registerLazySingleton<HomeRepo>(
+    () => HomeRepo(apiService: di<ApiService>()),
+  );
+
+  di.registerLazySingleton<CartRepo>(
+    () => CartRepo(apiService: di<ApiService>()),
+  );
   // Api Service
   di.registerLazySingleton<ApiService>(() => ApiService());
   // Auth Cubit
@@ -26,13 +34,15 @@ setupServiceLocator() {
     () => AuthCubit(authRepo: di<AuthRepo>()),
   );
   // Home Product Cubit
-  di.registerLazySingleton<HomeProductCubit>(
+  di.registerFactory<HomeProductCubit>(
     () => HomeProductCubit(homeRepo: di<HomeRepo>()),
   );
   // Home Category Cubit
-  di.registerLazySingleton<HomeCategoryCubit>(
+  di.registerFactory<HomeCategoryCubit>(
     () => HomeCategoryCubit(homeRepo: di<HomeRepo>()),
   );
+  // Cart Cubit
+  di.registerFactory<CartCubit>(() => CartCubit(cartRepo:  di<CartRepo>()));
   // Storage Manager
   di.registerLazySingleton(() => StorageManager());
 
