@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/features/home/models/product_model.dart';
@@ -15,12 +16,23 @@ class CustomHomeProductSliverGrid extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 20.h),
       sliver: SliverGrid(
         delegate: SliverChildBuilderDelegate((context, index) {
-          return CustomHomeProductGridItem(
-            product: products[index],
-            index: index,
-            onTap: () {
-              GoRouter.of(context).push(AppRoutes.productDetailsView,extra: products[index]);
-            },
+          return AnimationConfiguration.staggeredList(
+            duration: const Duration(milliseconds: 400),
+            position: index,
+            child: SlideAnimation(
+              verticalOffset: 120,
+              curve: Curves.easeInOut,
+              child: FadeInAnimation(
+              
+                child: CustomHomeProductGridItem(
+                  product: products[index],
+                  index: index,
+                  onTap: () {
+                    GoRouter.of(context).push(AppRoutes.productDetailsView,extra: products[index]);
+                  },
+                ),
+              ),
+            ),
           );
         }, childCount: products.length),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

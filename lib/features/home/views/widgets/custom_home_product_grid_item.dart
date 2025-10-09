@@ -41,15 +41,19 @@ class CustomHomeProductGridItem extends StatelessWidget {
                       ],
                     )
                     : null,
-            child: CachedNetworkImage(
-              errorWidget: (context, url, error) {
-                return Image.asset(
-                  index.isEven
-                      ? AssetsManager.productImagePoloShirt
-                      : AssetsManager.productImageShoes,
-                );
-              },
-              imageUrl: product.image,
+            child: Hero(
+              tag: 'productImage/${product.image}',
+              child: CachedNetworkImage(
+                
+                errorWidget: (context, url, error) {
+                  return Image.asset(
+                    index.isEven
+                        ? AssetsManager.productImagePoloShirt
+                        : AssetsManager.productImageShoes,
+                  );
+                },
+                imageUrl: product.image,
+              ),
             ),
           ),
         ),
