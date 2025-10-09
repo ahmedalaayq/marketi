@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketi/core/assets_manager/assets_manager.dart';
 import 'package:marketi/core/theme/light_colors.dart';
 import 'package:marketi/features/account/views/account_view.dart';
+import 'package:marketi/features/cart/cubit/cart_cubit.dart';
 import 'package:marketi/features/cart/views/cart_view.dart';
 import 'package:marketi/features/home/views/home_view.dart';
 
@@ -45,7 +47,13 @@ class _MainViewState extends State<MainView> {
           height: 86.h,
           selectedIndex: _currentIndex,
           indicatorColor: LightColors.primaryColor.withValues(alpha: 0.1),
-          onDestinationSelected: (i) => setState(() => _currentIndex = i),
+          onDestinationSelected:
+              (i) => setState(() {
+                _currentIndex = i;
+                if (_currentIndex == 1) {
+                  context.read<CartCubit>().getCart();
+                }
+              }),
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           destinations: [
             _buildDestination(
