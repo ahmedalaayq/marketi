@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_transitions/go_transitions.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
@@ -18,7 +19,7 @@ final ThemeData lightTheme = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     hintStyle: AppTextStyle.regular16,
-    
+
     filled: true,
     fillColor: LightColors.lightWhiteColor,
     contentPadding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 20.w),
@@ -46,15 +47,22 @@ final ThemeData lightTheme = ThemeData(
 
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedItemColor: LightColors.primaryColor,
-          unselectedItemColor: LightColors.greyColor,
-          unselectedLabelStyle: AppTextStyle.medium12.copyWith(height: 2.0.h),
-          selectedLabelStyle: AppTextStyle.medium12.copyWith(height: 2.0.h),
-          type: BottomNavigationBarType.fixed,
+    unselectedItemColor: LightColors.greyColor,
+    unselectedLabelStyle: AppTextStyle.medium12.copyWith(height: 2.0.h),
+    selectedLabelStyle: AppTextStyle.medium12.copyWith(height: 2.0.h),
+    type: BottomNavigationBarType.fixed,
   ),
   splashFactory: NoSplash.splashFactory,
   splashColor: Colors.transparent,
   highlightColor: Colors.transparent,
-  hoverColor: Colors.transparent
+  hoverColor: Colors.transparent,
+  pageTransitionsTheme: const PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: GoTransitions.fadeUpwards,
+      TargetPlatform.iOS: GoTransitions.cupertino,
+      TargetPlatform.macOS: GoTransitions.cupertino,
+    },
+  ),
 );
 
 OutlineInputBorder _buildTextFieldBorder({double? borderWidth, Color? color}) {

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_transitions/go_transitions.dart';
 import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/core/utils/service_locator.dart';
 import 'package:marketi/core/utils/storage_keys.dart';
@@ -65,7 +66,7 @@ class RouterManager {
                   return cubit;
                 },
               ),
-              BlocProvider(create: (context)=> di<CartCubit>()),
+              BlocProvider(create: (context) => di<CartCubit>()),
             ],
             child: const MainView(),
           );
