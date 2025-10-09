@@ -8,7 +8,6 @@ import 'package:marketi/features/account/views/account_view.dart';
 import 'package:marketi/features/auth/views/login_view.dart';
 import 'package:marketi/features/auth/views/sign_up_view.dart';
 import 'package:marketi/features/cart/cubit/cart_cubit.dart';
-import 'package:marketi/features/cart/repo/cart_repo.dart';
 import 'package:marketi/features/cart/views/address_view.dart';
 import 'package:marketi/features/cart/views/cart_view.dart';
 import 'package:marketi/features/home/cubits/home_categories_cubit.dart';
@@ -18,22 +17,27 @@ import 'package:marketi/features/home/repo/home_repo.dart';
 import 'package:marketi/features/main/views/main_view.dart';
 import 'package:marketi/features/payment/views/payment_view.dart';
 import 'package:marketi/features/product_details/views/product_details_view.dart';
+import 'package:marketi/features/splash/views/splash_view.dart';
 
 class RouterManager {
   static final GoRouter routerManager = GoRouter(
-    initialLocation: AppRoutes.loginView,
-    redirect: (context, state) async {
-      final token =
-          await di<StorageManager>().getToken(key: di<StorageKeys>().tokenKey)
-              as String?;
-      if (token != null &&
-          (state.matchedLocation == AppRoutes.loginView ||
-              state.matchedLocation == AppRoutes.signUpView)) {
-        return AppRoutes.mainView;
-      }
-      return null;
-    },
+    initialLocation: AppRoutes.splashView,
+    // redirect: (context, state) async {
+    //   final token =
+    //       await di<StorageManager>().getToken(key: di<StorageKeys>().tokenKey)
+    //           as String?;
+    //   if (token != null &&
+    //       (state.matchedLocation == AppRoutes.loginView ||
+    //           state.matchedLocation == AppRoutes.signUpView)) {
+    //     return AppRoutes.mainView;
+    //   }
+    //   return null;
+    // },
     routes: <GoRoute>[
+      GoRoute(
+        path: AppRoutes.splashView,
+        builder: (context, state) => const SplashView(),
+      ),
       GoRoute(
         path: AppRoutes.loginView,
         builder: (context, state) => const LoginView(),
