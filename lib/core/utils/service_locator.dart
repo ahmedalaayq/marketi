@@ -10,6 +10,7 @@ import 'package:marketi/features/cart/repo/cart_repo.dart';
 import 'package:marketi/features/home/cubits/home_categories_cubit.dart';
 import 'package:marketi/features/home/cubits/home_product_cubit.dart';
 import 'package:marketi/features/home/repo/home_repo.dart';
+import 'package:marketi/features/splash/controller/splash_view_controller.dart';
 
 GetIt di = GetIt.instance;
 
@@ -42,10 +43,13 @@ setupServiceLocator() {
     () => HomeCategoryCubit(homeRepo: di<HomeRepo>()),
   );
   // Cart Cubit
-  di.registerFactory<CartCubit>(() => CartCubit(cartRepo:  di<CartRepo>()));
+  di.registerFactory<CartCubit>(() => CartCubit(cartRepo: di<CartRepo>()));
   // Storage Manager
   di.registerLazySingleton(() => StorageManager());
 
   // Storage Keys
   di.registerLazySingleton(() => StorageKeys());
+
+  // Controller
+  di.registerLazySingleton(() => SplashViewController());
 }
