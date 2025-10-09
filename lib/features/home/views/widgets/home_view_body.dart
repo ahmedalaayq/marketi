@@ -52,9 +52,24 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             BlocBuilder<HomeProductCubit, HomeProductState>(
               builder: (context, state) {
                 if (state is HomeProductLoadingState) {
-                  return const SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Center(child: CircularProgressIndicator()),
+                  return SliverPadding(
+                    padding: EdgeInsets.only(top: 8.h),
+                    sliver: SliverGrid(
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        return Shimmer.fromColors(
+                          baseColor: Colors.grey.shade300,
+                          highlightColor: Colors.white,
+                          child: _buildSkeletonItem(context),
+                        );
+                      }, childCount: 6),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16,
+                            childAspectRatio: 0.68,
+                          ),
+                    ),
                   );
                 } else if (state is HomeProductSuccessState) {
                   return CustomHomeProductSliverGrid(products: state.products);
@@ -72,4 +87,22 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       ),
     );
   }
+}
+
+Widget _buildSkeletonItem(BuildContext context) {
+  return Container(
+    margin: EdgeInsets.only(bottom: 8.h),
+    padding: EdgeInsets.all(12.w),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(12.r),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.03),
+          blurRadius: 6,
+          spreadRadius: 1,
+        ),
+      ],
+    ),
+  );
 }

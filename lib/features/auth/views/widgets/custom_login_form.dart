@@ -9,7 +9,6 @@ import 'package:marketi/core/theme/light_colors.dart';
 import 'package:marketi/core/utils/service_locator.dart';
 import 'package:marketi/features/auth/cubit/auth_cubit.dart';
 import 'package:marketi/features/auth/cubit/auth_state.dart';
-import 'package:marketi/features/auth/models/auth_response_model.dart';
 import 'package:marketi/features/auth/repo/auth_repo.dart';
 
 import 'custom_button.dart';
@@ -41,6 +40,8 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _emailController.clear();
+    _passwordController.clear();
     super.dispose();
   }
 
