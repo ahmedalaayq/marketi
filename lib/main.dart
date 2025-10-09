@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marketi/core/router/router_manager.dart';
 import 'package:marketi/core/theme/light_theme.dart';
+import 'package:marketi/core/utils/app_configurations.dart';
 
 void main() async {
+  await initAppConfigurations();
   runApp(const Marketi());
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
 }
 
 class Marketi extends StatelessWidget {

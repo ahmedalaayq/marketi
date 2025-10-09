@@ -6,6 +6,9 @@ import 'package:marketi/core/assets_manager/assets_manager.dart';
 import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
+import 'package:marketi/core/widgets/custom_btn_icon.dart';
+import 'package:marketi/features/account/custom_dialog_item.dart';
+import 'package:marketi/features/auth/views/widgets/custom_button.dart';
 import 'package:marketi/features/cart/views/widgets/custom_cart_appbar.dart';
 
 class AccountViewBody extends StatelessWidget {
@@ -79,7 +82,23 @@ class AccountViewBody extends StatelessWidget {
               color: LightColors.redColor.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(8.r),
             ),
-            child: _buildAccountTile(title: 'Logout'),
+            child: _buildAccountTile(
+              title: 'Logout',
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return const Dialog(
+                      insetPadding: EdgeInsets.all(24),
+                      child: Padding(
+                        padding: EdgeInsets.all(24.0),
+                        child: CustomDialogItem(),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ),
       ],

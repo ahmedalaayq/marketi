@@ -19,6 +19,7 @@ class SignUpViewBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 16.h),
                 Text('Create an Account', style: AppTextStyle.semiBold32),
                 SizedBox(height: 8.h),
                 Text(

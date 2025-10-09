@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
 import 'package:marketi/core/widgets/custom_btn_icon.dart';
 
 import 'custom_cart_appbar.dart';
 import 'custom_cart_item.dart';
-
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -23,7 +24,7 @@ class CartViewBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomAppbar(title: 'My Cart',),
+                  const CustomAppbar(title: 'My Cart'),
                   ...List.generate(3, (int index) {
                     return const CustomShoppingCartItem();
                   }),
@@ -59,7 +60,7 @@ class CartViewBody extends StatelessWidget {
                     isTotal: true,
                   ),
 
-                  SizedBox(height: 100.h), 
+                  SizedBox(height: 100.h),
                 ],
               ),
             ),
@@ -71,7 +72,9 @@ class CartViewBody extends StatelessWidget {
         child: CustomBtnIcon(
           icon: Icons.arrow_forward_outlined,
           btnText: 'Go To Checkout',
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).push(AppRoutes.paymentView);
+          },
           iconAlignment: IconAlignment.end,
         ),
       ),
@@ -79,25 +82,22 @@ class CartViewBody extends StatelessWidget {
   }
 }
 
-
-  Row _buildCustomCardBill({
-    required String billingTitle,
-    required String price,
-    bool isTotal = false,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          billingTitle,
-          style:
-              isTotal
-                  ? AppTextStyle.regular16.copyWith(
-                    color: LightColors.blackColor,
-                  )
-                  : AppTextStyle.regular16,
-        ),
-        Text(price, style: AppTextStyle.medium16),
-      ],
-    );
-  }
+Row _buildCustomCardBill({
+  required String billingTitle,
+  required String price,
+  bool isTotal = false,
+}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        billingTitle,
+        style:
+            isTotal
+                ? AppTextStyle.regular16.copyWith(color: LightColors.blackColor)
+                : AppTextStyle.regular16,
+      ),
+      Text(price, style: AppTextStyle.medium16),
+    ],
+  );
+}

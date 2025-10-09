@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/router/app_routes.dart';
+import 'package:marketi/features/home/models/product_model.dart';
 import 'package:marketi/features/home/views/widgets/custom_home_product_grid_item.dart';
 
 class CustomHomeProductSliverGrid extends StatelessWidget {
-  const CustomHomeProductSliverGrid({super.key});
+  const CustomHomeProductSliverGrid({super.key, required this.products});
+  final List<ProductModel> products;
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +16,25 @@ class CustomHomeProductSliverGrid extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 20.h),
       sliver: SliverGrid(
         delegate: SliverChildBuilderDelegate((context, index) {
-          return CustomHomeProductGridItem(
-            index: index,
-            onTap: () {
-              GoRouter.of(context).push(AppRoutes.productDetailsView);
-            },
+          return AnimationConfiguration.staggeredList(
+            duration: const Duration(milliseconds: 400),
+            position: index,
+            child: SlideAnimation(
+              verticalOffset: 120,
+              curve: Curves.easeInOut,
+              child: FadeInAnimation(
+              
+                child: CustomHomeProductGridItem(
+                  product: products[index],
+                  index: index,
+                  onTap: () {
+                    GoRouter.of(context).push(AppRoutes.productDetailsView,extra: products[index]);
+                  },
+                ),
+              ),
+            ),
           );
-        }, childCount: 10),
+        }, childCount: products.length),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
