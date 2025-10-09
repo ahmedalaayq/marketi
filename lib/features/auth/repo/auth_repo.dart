@@ -1,8 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/networking/api_endpoints.dart';
 import 'package:marketi/core/networking/api_service.dart';
+import 'package:marketi/core/router/app_routes.dart';
 import 'package:marketi/core/utils/service_locator.dart';
+import 'package:marketi/core/utils/storage_keys.dart';
 import 'package:marketi/core/utils/storage_manager.dart';
 import 'package:marketi/features/auth/models/auth_response_model.dart';
 
@@ -36,5 +40,11 @@ class AuthRepo {
       }
       return Left(error.toString());
     }
+  }
+
+  logout(BuildContext context) async {
+    await di<StorageManager>().removeToken(key: di<StorageKeys>().tokenKey);
+    if (!context.mounted) return;
+    GoRouter.of(context).go(AppRoutes.loginView);
   }
 }
