@@ -29,7 +29,7 @@ class ProductDetailsView extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: CustomProductDetailsBottomSection(price: product!.price,),
+            child: CustomProductDetailsBottomSection(productModel: product!,),
           ),
         ],
       ),
