@@ -1,12 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marketi/core/assets_manager/assets_manager.dart';
 import 'package:marketi/core/theme/app_text_style.dart';
 import 'package:marketi/core/theme/light_colors.dart';
-import 'package:marketi/features/cart/views/widgets/custom_cart_appbar.dart';
 
 class CustomShoppingCartItem extends StatefulWidget {
   const CustomShoppingCartItem({super.key});
