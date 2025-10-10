@@ -87,38 +87,27 @@ This structure keeps the app modular, scalable, and easy to maintain.
 
 Here are some screenshots using direct raw links from your GitHub repository:
 
-## 🎨 UI Showcase (Selected & Organized)
+## 🎨 UI Showcase
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/login.png" alt="Login" width="320"/>
-      <div><strong>Login</strong></div>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/register.png" alt="Register" width="320"/>
-      <div><strong>Register</strong></div>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/home.png" alt="Home Screen" width="320"/>
-      <div><strong>Home Screen</strong></div>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/details.png" alt="Product Details" width="320"/>
-      <div><strong>Product Details</strong></div>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/cart.png" alt="Cart Screen" width="320"/>
-      <div><strong>Cart Screen</strong></div>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/logout.png" alt="Logout Dialog" width="320"/>
-      <div><strong>Logout Dialog</strong></div>
-    </td>
-  </tr>
-</table>
+Here are selected screenshots from the **Marketi App** 👇
+
+### 🧾 Auth & Main Screens
+
+| Login | Register | Home | Product Details |
+|:------:|:---------:|:----:|:----------------:|
+| ![Login](https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/login.png) | ![Register](https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/register.png) | ![Home](https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/home.png) | ![Details](https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/details.png) |
+
+---
+
+### 🛒 Cart & Dialogs
+
+| Cart Screen | Logout Dialog |
+|:-------------:|:---------------:|
+| ![Cart](https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/cart.png) | ![Logout](https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/logout.png) |
+
+> 🖼️ All screenshots are stored in `assets/screenshots/`.  
+> You can update them anytime with new UI captures.
+
 
 
 > If those filenames don’t exactly match what you have (e.g. `login.png`, `home.png`, etc.), update the image names accordingly.
