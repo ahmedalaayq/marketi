@@ -87,6 +87,8 @@ This structure keeps the app modular, scalable, and easy to maintain.
 
 Here are some screenshots using direct raw links from your GitHub repository:
 
+## 🎨 UI Showcase (Selected & Organized)
+
 <table>
   <tr>
     <td align="center">
@@ -98,7 +100,7 @@ Here are some screenshots using direct raw links from your GitHub repository:
       <div><strong>Register</strong></div>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/home.png" alt="Home" width="320"/>
+      <img src="https://raw.githubusercontent.com/ahmedalaayq/marketi/master/assets/screenshots/home.png" alt="Home Screen" width="320"/>
       <div><strong>Home Screen</strong></div>
     </td>
     <td align="center">
@@ -117,6 +119,7 @@ Here are some screenshots using direct raw links from your GitHub repository:
     </td>
   </tr>
 </table>
+
 
 > If those filenames don’t exactly match what you have (e.g. `login.png`, `home.png`, etc.), update the image names accordingly.
 
